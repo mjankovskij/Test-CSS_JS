@@ -42,17 +42,19 @@ function printProducts(minPrice = 0, maxPrice = 1000) {
         );
 
     });
+
+    $('.btn-delete').click(function () {
+        let products = JSON.parse(localStorage.getItem('products')) ?? [];
+        products = products.filter(p => p.id != this.id);
+        localStorage.setItem('products', JSON.stringify(products));
+        printProducts();
+    });
+    
 }
 printProducts();
 
 
 
-$('.btn-delete').click(function () {
-    let products = JSON.parse(localStorage.getItem('products')) ?? [];
-    products = products.filter(p => p.id != this.id);
-    localStorage.setItem('products', JSON.stringify(products));
-    printProducts();
-});
 
 
 $('#rangeval').html(priceString(0) + " - " + priceString(1000));
