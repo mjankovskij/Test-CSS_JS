@@ -4,6 +4,12 @@ $('#btn-create').click(function () {
     const price = $('#add-form #price').val();
     const image = $('#add-form #image').val();
 
+
+    if (isNaN(price)) {
+        alert('Blogai įvesta kaina.')
+        return;
+    }
+
     if (name && description && price && image) {
         const products = JSON.parse(localStorage.getItem('products')) ?? [];
         products.push({
@@ -17,18 +23,20 @@ $('#btn-create').click(function () {
         localStorage.setItem('products', JSON.stringify(products));
 
         $('#add-form input').val('');
+        printProducts();
+    } else {
+        alert('Užpildyti ne visi laukai.')
     }
-    printProducts();
 });
 
 function printProducts(minPrice = 0, maxPrice = 1000) {
     $("#products").empty();
     const products = JSON.parse(localStorage.getItem('products')) ?? [];
     products
-    .filter(o => o.price > minPrice && o.price < maxPrice)
-    .forEach(p => {
-        $("#products").append(
-            `<div class="col-12 col-md-6 col-lg-3 product">
+        .filter(o => o.price > minPrice && o.price < maxPrice)
+        .forEach(p => {
+            $("#products").append(
+                `<div class="col-12 col-md-6 col-lg-3 product">
         <div class="card">
         <img class="card-img-top" src="${p.image}" alt="">
         <div class="card-body">
@@ -39,9 +47,9 @@ function printProducts(minPrice = 0, maxPrice = 1000) {
             <button class="btn btn-primary btn-block btn-delete" id="${p.id}">Ištrinti</button>
             </div> </div>
         </div>`
-        );
+            );
 
-    });
+        });
 
     $('.btn-delete').click(function () {
         let products = JSON.parse(localStorage.getItem('products')) ?? [];
@@ -49,7 +57,7 @@ function printProducts(minPrice = 0, maxPrice = 1000) {
         localStorage.setItem('products', JSON.stringify(products));
         printProducts();
     });
-    
+
 }
 printProducts();
 
