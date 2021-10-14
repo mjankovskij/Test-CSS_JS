@@ -1,6 +1,6 @@
 # Test-CSS_JS
 
-Link: https://mjankovskij.github.io/Test-CSS_JS/ (nepamirškite pridėti produktus, kitaip nematysite jų. Nes jei saugomi localsotrage.).
+Link: https://mjankovskij.github.io/Test-CSS_JS/ (nepamirškite pridėti prekių, kitaip nematysite jų. Nes jos saugomi localsotrage.).
 
 
 ![Screenshot 2021-10-14 200722](https://user-images.githubusercontent.com/70883106/137364153-c2a163c2-3b3a-433f-9911-9dee6f646c96.jpg)
